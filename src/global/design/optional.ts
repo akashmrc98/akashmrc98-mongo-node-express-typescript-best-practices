@@ -1,4 +1,4 @@
-import { ErrorFactory} from "../errors/errors_factory";
+import { ErrorFactory} from "../errors/error_factory";
 
 export class Optional {
     object: any;

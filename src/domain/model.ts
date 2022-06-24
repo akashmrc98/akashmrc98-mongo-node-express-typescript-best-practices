@@ -24,6 +24,9 @@ export class User {
         this.user.username = username
         return this;
     }
+    get(){
+        return this.user;
+    }
 }
 
 const userSchema = new Schema({

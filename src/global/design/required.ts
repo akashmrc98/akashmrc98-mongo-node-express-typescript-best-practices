@@ -1,4 +1,4 @@
-import { ErrorFactory } from '../errors/errors_factory'
+import { ErrorFactory } from '../errors/error_factory'
 
 export class Required {
     keys: Array<string> = [];
@@ -13,7 +13,7 @@ export class Required {
     getItems() {
         for (let i = 0; i < this.keys.length; i++) {
             if (!this.object.hasOwnProperty(this.keys[i])) {
-                throw ErrorFactory.inputError("input requrired" + this.keys[i])
+                throw ErrorFactory.inputError("requrired : " + this.keys[i])
             }
         }
         return this.object

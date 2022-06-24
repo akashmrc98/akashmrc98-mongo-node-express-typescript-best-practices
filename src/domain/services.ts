@@ -1,5 +1,5 @@
 import { db, UserInterface } from '../db'
-import { ErrorFactory } from "../global/errors/errors_factory";
+import { ErrorFactory } from "../global/errors/error_factory";
 
 const { UserModel } = db
 

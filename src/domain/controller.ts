@@ -28,18 +28,19 @@ export class DomainController {
             const userInput = new User({})
                 .setFirstname(firstname)
                 .setLastname(lastname)
-                .setUsername(username);
+                .setUsername(username)
+                .get();
             try {
                 // creating db query
                 // low level logic should be ideal to written in services
-                const query = await DomainServices.createUser(userInput.user)
+                const query = await DomainServices.createUser(userInput)
 
                 // using optional 
                 // optionals throws errors
                 // try  breaking code with below statements can be able to catch 
                 // const optional = new Optional(null);
-                // const optional = new Optional(undefined);
-                const optional = new Optional(query);
+                const optional = new Optional(undefined);
+                // const optional = new Optional(query);
 
                 // either get data or throw error
                 // typecasting data to user interface
@@ -51,17 +52,17 @@ export class DomainController {
                 // catching query errors
                 const err = e as Error;
                 if (err.name === ErrorType.OBJECT_NOT_FOUND_ERROR.toString()) {
-                    return HttpFactory.STATUS_404_NOT_FOUND({message:"null"}, res)
+                    return HttpFactory.STATUS_404_NOT_FOUND({message:err.message}, res)
                 }
                 if (err.name === ErrorType.ACCESSING_UNDEFINED_ERROR.toString()) {
-                    return HttpFactory.STATUS_503_SERVICE_UNAVAILABLE({message:"undefined"}, res)
+                    return HttpFactory.STATUS_503_SERVICE_UNAVAILABLE({message:err.message}, res)
                 }
             }
         } catch (e) {
             // catching request errors
             const err = e as Error;
             if (err.name === ErrorType.INPUT_ERROR.toString()) {
-                return HttpFactory.STATUS_400_BAD_REQUEST({}, res)
+                return HttpFactory.STATUS_400_BAD_REQUEST({message:err.message}, res)
             }
         }
     }
