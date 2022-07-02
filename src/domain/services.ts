@@ -6,10 +6,12 @@ const { UserModel } = db
 export class DomainServices {
     static createUser = async (user: UserInterface): Promise<UserInterface | Error> => {
         try {
-            return await UserModel.create(user);
+            return await UserModel.create(user) as UserInterface;
         } catch (e) {
             console.log(e);
             throw ErrorFactory.typeError("bad request");
         }
     }
 }
+
+// elastic services

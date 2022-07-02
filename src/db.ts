@@ -2,7 +2,7 @@ import mongoose from "mongoose";
 import { User, UserModel, UserDoc, UserInterface } from "./domain/model";
 
 export const db = { UserModel }
-export const classes = {User}
+export const classes = { User }
 export { UserDoc }
 export { UserInterface }
 
@@ -11,7 +11,7 @@ mongoose
         autoCreate: true,
         dbName: "users",
         autoIndex: true,
-        connectTimeoutMS:10000
+        connectTimeoutMS: 10000
     }).then().catch()
 
 mongoose.connection

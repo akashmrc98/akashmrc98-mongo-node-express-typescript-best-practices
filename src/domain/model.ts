@@ -12,16 +12,16 @@ export class User {
         this.user = user;
     }
     setFirstname(firstname:UserInterface["firstname"]){
-        this.user.firstname =firstname 
+        this.user.firstname = firstname ?? ""
         return this;
     }
 
     setLastname(lastname:UserInterface["lastname"]){
-        this.user.lastname = lastname;
+        this.user.lastname = lastname ?? "";
         return this;
     }
     setUsername(username:UserInterface["username"]){
-        this.user.username = username
+        this.user.username = username ?? ""
         return this;
     }
     get(){
